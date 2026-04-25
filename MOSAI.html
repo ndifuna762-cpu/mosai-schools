@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Mosai Schools Uganda </title>
+  <!-- Google Fonts: Inter for clean readability -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 (free icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      transition: 0.3s ease, color 0.2s ease;
+      line-height: 1.5;
+    }
+
+ 
+
+    body {
+      background-color: #c3dcea;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* navbar */
+    .navbar {
+      background-color: red;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+      padding: 18px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid #c3dcea;
+    }
+
+    .nav-flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .logo h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      background-clip: text;
+      -webkit-background-clip: text;
+      color:#e4b6b6 ;
+      letter-spacing: -0.3px;
+    }
+
+    .logo p {
+      font-size: 0.8rem;
+      color: #e4b6b6;
+    }
+
+    /* desktop navigation links */
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 500;
+      color: #e4b6b6;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: whitesmoke;
+    }
+
+    /* toggle menu button (hamburger + dark/light combined style but we separate) */
+    /* we add a separate hamburger button for mobile */
+    .menu-toggle-btn {
+      display: none;
+      background:none ;
+      border: 1px solid #e4b6b6;
+      border-radius: 60px;
+      padding: 8px 16px;
+      cursor: pointer;
+      font-weight: 500;
+      gap: 8px;
+      align-items: center;
+      color: white;
+      font-size: 0.9rem;
+    }
+
+    /* mobile menu overlay */
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      left: -100%;
+      width: 70%;
+      max-width: 250px;
+      height: 95vh;
+      background: #224c88;
+      backdrop-filter: blur(20px);
+      z-index: 200;
+      padding: 32px 24px;
+      transition: left 0.3s ease-in-out;
+      box-shadow: 4px 0 20px rgba(0, 0, 0, 0.2);
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      border-right: 1px solid #c3dcea;
+    }
+
+    .mobile-menu.open {
+      left:0;
+    }
+
+    .mobile-menu a {
+      text-decoration: none;
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: var(--text-primary);
+      padding: 10px 0;
+      border-bottom: 1px solid white;
+      transition: 0.2s;
+    }
+
+    .mobile-menu a:hover {
+      color: whitesmoke;
+      padding-left: 8px;
+    }
+
+    .close-menu {
+      align-self: flex-end;
+      background: none;
+      border: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: whitesmoke;
+    }
+
+    .menu-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 150;
+      display: none;
+    }
+
+    .menu-overlay.active {
+      display: block;
+    }
+
+    /* hero */
+    .hero {
+      background-image:url("mosai ict.jpg");  
+      background-repeat:no-repeat;
+      background-size:cover ;
+      padding: 70px 0 80px;
+      border-bottom: 1px solid #c3dcc3 ;
+    }
+
+    .hero-grid {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 48px;
+    }
+
+    .hero-content {
+      flex: 1.2;
+    }
+
+    .hero-badge {
+      backdrop-filter:blur(10px);
+      color: white;
+      display: inline-block;
+      padding: 6px 18px;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+
+    .hero-content h1 {
+      font-size: 4rem;
+      font-weight: 700;
+      line-height: 1.2;
+      background:linear-gradient( 90deg,#113881ec,#f33413); 
+      -webkit-background-clip:text ;
+      background-clip:text ;
+      color: transparent;
+    }
+
+    .hero-highlight {
+      font-size: 1.5rem;
+      font-weight: 500;
+      color:#224c88;
+      border-left: 4px solid red;
+      padding-left: 20px;
+      margin: 20px 0 28px;
+    }
+
+    .btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      margin-top: 12px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 32px;
+      border-radius: 48px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: linear-gradient(30deg,blue,red);
+      color: #4ca8dd;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.02);
+    }
+
+    .btn-outline {
+      background:linear-gradient(30deg,blue,red);
+      color:#4ca8dd;
+    }
+
+    .btn-outline:hover {
+      background: rgba(66, 165, 245, 0.1);
+    }
+
+    .section {
+      padding: 70px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.2rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+      color: #224c88;
+    }
+
+    .section-sub {
+      text-align: center;
+      color:black ;
+      max-width: 620px;
+      margin: 0 auto 56px;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 32px;
+    }
+
+    .feature-card {
+      background:transparent ;
+      border-radius: 28px;
+      padding: 10px 15px;
+      box-shadow: 0 0 10px #153e8cbb;
+      transition: 0.2s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .feature-icon {
+      font-size: 2.4rem;
+      background:linear-gradient(3deg, blue ,red);
+      -webkit-background-clip: text;
+      background-clip:text ;
+      color:transparent ;
+      margin-bottom: 18px;
+    }
+
+    .info-panel {
+      background: #c3dcea;
+      border-radius: 40px;
+      padding: 48px 40px;
+      margin: 20px 0 40px;
+      position:top ;
+      color: #315633;
+    }
+
+    .two-columns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 48px;
+    }
+
+    .info-card {
+      flex: 1;
+      box-shadow:0 0 15px #224c88 ;
+      border-radius: 28px;
+      padding: 24px 28px;
+      color: #315633;
+    }
+
+    .campus-list {
+      list-style: none;
+      color: #315633;
+    }
+
+    .campus-list li {
+      margin-bottom: 16px;
+      border-left: 3px solid red;
+      padding-left: 16px;
+      font-weight: 500;
+      color:#315633 ;
+    }
+
+    .form-card {
+      background:#c3dcea;
+      border-radius: 36px;
+      padding: 32px 36px;
+      margin-top: 40px;
+      margin-bottom: 60px;
+      box-shadow:0 0 15px #224c88 ;
+      color: #315633;
+    }
+
+    .form-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+
+    .form-group {
+      flex: 1;
+      min-width: 180px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: #315633;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: 24px;
+      background:#15478e57;
+      color:black ;
+      font-family: 'Inter', sans-serif;
+      transition: 0.2s;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      box-shadow: #224c88;
+    }
+
+    .submit-btn {
+      background: linear-gradient(30deg,blue,red);
+      border: none;
+      padding: 12px 32px;
+      border-radius: 48px;
+      font-weight: 700;
+      color: #c3dcea;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: 0.2s;
+    }
+
+    .submit-btn:hover {
+      filter: brightness(1.02);
+      transform: scale(0.98);
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .footer {
+      background-color:#224c88 ;
+      color: black;
+      padding: 48px 0 32px;
+      margin-top: 40px;
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 32px;
+      font-size: 0.8rem;
+      border-top: 1px solid #334155;
+    }
+
+    .success-message {
+      background: #2e7d32;
+      color: white;
+      padding: 12px;
+      border-radius: 32px;
+      text-align: center;
+      margin-top: 20px;
+      display: none;
+    }
+
+    @media (max-width: 780px) {
+      .container {
+        padding: 0 20px;
+      }
+
+      .hero-content h1 {
+        font-size: 2.2rem;
+      }
+
+      .form-card {
+        padding: 24px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .menu-toggle-btn {
+        display: flex;
+      }
+
+      .nav-flex {
+        justify-content: space-between;
+      }
+    }
+
+    @media (min-width: 781px) {
+      .mobile-menu,
+      .menu-overlay {
+        display: none;
+      }
+    }
+
+
+
+    .gallery {
+  padding: 50px 20px;
+  text-align: center;
+  background: #c3dcea;
+}
+
+.gallery h2 {
+  margin-bottom: 20px;
+  font-size: 28px;
+}
+
+.gallery-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+  
+}
+
+.gallery-item {
+  overflow: hidden;
+  border-radius: 10px;
+  position: relative;
+  justify-content: center;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.gallery-item img:hover {
+  transform: scale(1.1);
+}
+.note{  bottom: 0; color: #32464a; border-radius: 12px; backdrop-filter:blur(8px) ; position:absolute; border:solid ;}
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container nav-flex">
+      <div class="logo">
+        <h1>MOSAI SCHOOLS</h1>
+        <p>Nursery & Primary 
+      </div>
+      <div class="nav-links">
+        <a href="#why-us">Why Us</a>
+        <a href="#about">About</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#admission-form">Apply</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <!-- toggle menu button (hamburger) for mobile -->
+      <button class="menu-toggle-btn" id="menuToggleBtn" aria-label="Menu">
+        <i class="fas fa-bars"></i> Menu
+      </button>
+    </div>
+  </nav>
+
+  <!-- mobile sidebar menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="close-menu" id="closeMenuBtn">&times;</button>
+    <a href="#why-us" class="mobile-nav-link">Why Choose Us</a>
+        <a href="#about" class="mobile-nav-link">About</a>
+        <a href="#gallery" class="mobile-nav-link">Gallery</a>
+    <a href="#campuses" class="mobile-nav-link">Our Campuses</a>
+    <a href="#admission-form" class="mobile-nav-link">Admission Form</a>
+    <a href="#contact" class="mobile-nav-link">Contact</a>
+    </button>
+  </div>
+  <div class="menu-overlay" id="menuOverlay"></div>
+
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <div class="hero-badge"><i class="fas fa-calendar-alt"></i> 2026 Admissions Open</div>
+        <h1>Registration for school admission <br>is now open <span style="color:var(--accent-red);">2026</span></h1>
+        <div class="hero-highlight">
+          From Baby Class to P.4 — <br>a peaceful journey with heart.
+        </div>
+        <div class="btn-group">
+          <a href="#admission-form" class="btn btn-primary"><i class="fas fa-pen-alt"></i> Enroll now</a>
+          <a href="#why-us" class="btn btn-outline"><i class="fas fa-leaf" style="color: #2e7d32;"></i> Why Mosai</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="why-us" class="section">
+    <div class="container">
+      <div class="section-title">Why choose us?</div>
+      <div class="section-sub">A sanctuary for growth, blending high standards with warmth and practical skills.</div>
+      <div class="features-grid">
+        <div class="feature-card"><div class="feature-icon"><i class="fas fa-tree"></i></div><h3>Conclusive Learning Environment</h3><p>Serene, nature-infused campuses designed for focus and joy.</p></div>
+        <div class="feature-card"><div class="feature-icon"><i class="fas fa-futbol"></i></div><h3>Extra-curriculum Activities</h3><p>Scouting, swimming, dance, drama, volleyball & more.</p></div>
+        <div class="feature-card"><div class="feature-icon"><i class="fas fa-star"></i></div><h3>High Educational Standards</h3><p>Academic excellence with creative exploration.</p></div>
+        <div class="feature-card"><div class="feature-icon"><i class="fas fa-chalkboard-user"></i></div><h3>Experienced & Dedicated Staff</h3><p>Passionate educators who nurture every child.</p></div>
+        <div class="feature-card"><div class="feature-icon"><i class="fas fa-laptop"></i></div><h3>Computer & ICT Skills</h3><p>Urban farming, driving, ICT — real-world readiness.</p></div>
+        <div class="feature-card"><div class="feature-icon"><i class="fas fa-language"></i></div><h3>Multilingual learning</h3><p>Swahili, French, Luganda & soon Chinese.</p></div>
+      </div>
+    </div>
+  </section>
+  <section id="gallery" class="gallery">
+  <h2>Our Gallery</h2>
+  <div class="gallery-container">
+     
+
+    <!--gallery image here-->
+    <div class="gallery-item">
+      <img src="mosai ict.jpg" > <div class="note" style="border: solid;  position: absolute;">   <p>Our comprehenssive ict lab </p></div>
+    </div>
+
+    <div class="gallery-item">
+      <img src="classroom.jpg" > <div class="note"> specious class rooms</div>
+    </div>
+
+    <div class="gallery-item">
+      <img src="images/img3.jpg" >
+      
+    </div>
+
+    <div class="gallery-item"style="background:linear-gradient(90deg, green, blue);">
+      <img src="images/img4.jpg" alt="sports day">
+    </div>
+
+  </div>
+</section>
+
+  <div class="container" id="campuses">
+    <div class="info-panel">
+      <div class="two-columns">
+        <div class="info-card">
+          <h3><i class="fas fa-map-marker-alt" style="color:red;"></i> Our Campuses</h3>
+          <ul class="campus-list">
+            <li>🏫 Nalugala Campus - Natalia</li>
+            <li>🏫 Opp. Mirembe Stage, Garuga Road - Eni</li>
+            <li>🏫 Bunono Campus - Nabutono Road, After COVID19 Trading Centre - Katabi Entebbe</li>
+          </ul>
+          <div style="margin-top: 28px; background: #6ca7cf; border-radius: 28px; padding: 16px;">
+            <i class="fas fa-clock" style="color: #224c88;"></i> <strong>Interviews open</strong><br>Monday to Saturday · 9:00am – 4:00pm<br>at all campuses.
+          </div>
+        </div>
+        <div class="info-card" id="contact">
+          <h3><i class="fas fa-phone-alt" style="color:green;"></i> Contact & Connect</h3>
+          <div class="contact-item"><i class="fas fa-phone"style="color:red"></i> +256745431412</div>
+          <div class="contact-item"><i class="fas fa-phone"style="color:red"></i> +256774835613</div>
+          <div class="contact-item"><i class="fas fa-envelope"style="color:white"></i> mosaischools@gmail.com</div>
+          <div class="contact-item"><i class="fas fa-globe"style="color:white"></i> www.mosaischools.com</div>
+          <p style="margin-top: 16px;"><i class="fas fa-seedling"style="color:green;></i> Practical skills: urban farming, driving, ICT & more.</p>
+          <p><i class="fas fa-box"></i> P.O.Box 11972, Kampala-Uganda</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container" id="admission-form">
+    <div class="form-card">
+      <h2 style="font-size: 1.9rem; margin-bottom: 8px; text-align: center;"><i class="fas fa-pen-ruler" style="background: linear-gradient(30deg,blue,red); -webkit-background-clip:text; background-clip:text; color:transparent;"></i> Request Admission 2026</h2>
+      <p style="text-align: center; margin-bottom: 32px; color: var(--text-secondary);">Fill the form — our calm admissions team will reach out within 24h.</p>
+      <form id="inquiryForm">
+        <div class="form-row">
+          <div class="form-group"><label>Full name *</label><input type="text" id="fullName" required placeholder="e.g., Grace Nambi"></div>
+          <div class="form-group"><label>Parent / Guardian *</label><input type="text" id="parentName" required placeholder="Your name"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>Email *</label><input type="email" id="email" required placeholder="hello@family.com"></div>
+          <div class="form-group"><label>Phone *</label><input type="tel" id="phone" required placeholder="+2567xxxxxx"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>Child's class for 2026</label>
+            <select id="classLevel">
+              <option>Baby Class</option><option>Middle Class</option><option>Top Class</option><option>P.1</option><option>P.2</option><option>P.3</option><option>P.4</option>
+            </select>
+          </div>
+          <div class="form-group"><label>Preferred Campus</label>
+            <select id="campus">
+              <option>Nalugala Campus - Natalia</option><option>Garuga Road - Eni</option><option>Bunono Campus - Katabi Entebbe</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group"><label>Message (optional)</label><textarea rows="3" id="message" placeholder="Tell us about your child or any questions..."></textarea></div>
+        <div style="display: flex; justify-content: center; margin-top: 28px;">
+          <button type="submit" class="submit-btn"><i class="fas fa-paper-plane"></i> Submit inquiry</button>
+        </div>
+        <div id="formFeedback" class="success-message"></div>
+      </form>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="two-columns" style="gap: 32px;">
+        <div><h3 style="color:#c3dcea;">MOSAI SCHOOLS</h3><p style="margin-top: 8px;">Nursery & Primary School · Kampala, Uganda</p><p>Red & Blue: courage, wisdom & calm learning.</p></div>
+        <div><strong>Quick links</strong><br><a href="#" style=" text-decoration: none;">Admissions 2026</a><br><a href="#why-us" style="color: var(--footer-text); text-decoration: none;">Why choose us</a><br><a href="#campuses" style="color: var(--footer-text); text-decoration: none;">Campuses</a></div>
+        <div><strong>Follow calm vibes</strong><br><i class="fab fa-facebook"></i> Mosai Schools<br><i class="fab fa-instagram"></i> @mosai_schools</div>
+      </div>
+      <div class="copyright"><p>© 2026 Mosai Schools — Nurturing hearts, growing minds. Inspired by red passion & blue serenity.</p></div>
+    </div>
+  </footer>
+
+  <script>
+    
+    // MOBILE TOGGLE MENU (hamburger)
+    const menuToggleBtn = document.getElementById('menuToggleBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuOverlay = document.getElementById('menuOverlay');
+    const closeMenuBtn = document.getElementById('closeMenuBtn');
+
+    function openMenu() {
+      mobileMenu.classList.add('open');
+      menuOverlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeMenu() {
+      mobileMenu.classList.remove('open');
+      menuOverlay.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    menuToggleBtn.addEventListener('click', openMenu);
+    closeMenuBtn.addEventListener('click', closeMenu);
+    menuOverlay.addEventListener('click', closeMenu);
+
+    // close mobile menu when clicking a nav link
+    document.querySelectorAll('.mobile-nav-link').forEach(link => {
+      link.addEventListener('click', closeMenu);
+    });
+
+    // FORM HANDLER
+    const form = document.getElementById('inquiryForm');
+    const feedbackDiv = document.getElementById('formFeedback');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const fullName = document.getElementById('fullName').value.trim();
+      const parentName = document.getElementById('parentName').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+
+      if (!fullName || !parentName || !email || !phone) {
+        feedbackDiv.style.display = 'block';
+        feedbackDiv.style.backgroundColor = '#c62828';
+        feedbackDiv.innerText = '❌ Please fill all required fields (Name, Parent, Email, Phone).';
+        setTimeout(() => { feedbackDiv.style.display = 'none'; }, 3000);
+        return;
+      }
+      if (!email.includes('@') || !email.includes('.')) {
+        feedbackDiv.style.display = 'block';
+        feedbackDiv.style.backgroundColor = '#c62828';
+        feedbackDiv.innerText = '⚠️ Enter a valid email address.';
+        setTimeout(() => { feedbackDiv.style.display = 'none'; }, 3000);
+        return;
+      }
+
+      feedbackDiv.style.display = 'block';
+      feedbackDiv.style.backgroundColor = '#2e7d32';
+      feedbackDiv.innerHTML = '✅ Thank you! The Mosai admissions team will contact you soon.';
+      form.reset();
+      setTimeout(() => {
+        feedbackDiv.style.display = 'none';
+      }, 5000);
+    });
+
+    initTheme();
+  </script>
+</body>
+</html>
